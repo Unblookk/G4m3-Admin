@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Downloads</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #000;
+    color: #fff;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    min-height: 100vh;
+  }
+
+  .topbar {
+    background: #050505;
+    border-bottom: 2px solid #ffffff22;
+    padding: 14px 24px;
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .main {
+    padding: 50px 60px;
+  }
+
+  h1.hero-title {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+
+  .dl-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 900px;
+  }
+
+  .dl-btn {
+    display: inline-block;
+    min-width: 160px;
+    text-align: center;
+    background: #0a0a0a;
+    color: #fff;
+    border: 2px solid #ffffff33;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 17px;
+    text-decoration: none;
+    padding: 16px 24px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+
+  .dl-btn:hover {
+    transform: scale(1.08);
+    border-color: #fff;
+    box-shadow: 0 0 12px 2px #fff, 0 0 30px 6px #ffffffaa;
+  }
+
+  .dl-btn.disabled {
+    color: #666;
+    pointer-events: none;
+  }
+
+  @media (max-width: 700px) {
+    .main { padding: 24px 16px; }
+    h1.hero-title { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">Downloads</div>
+
+  <div class="main">
+    <h1 class="hero-title">Downloads</h1>
+    <div class="dl-grid" id="dl-grid"></div>
+  </div>
+
+<script>
+  // ============================================================
+  // EDIT THIS LIST. One line per button.
+  //   name: the text on the button
+  //   url:  what it downloads
+  //
+  // url can be:
+  //   - A file you uploaded to this repo:  "files/download1.zip"
+  //   - A full link to a file elsewhere:   "https://example.com/file.zip"
+  //   - Left as "" and the button is greyed out
+  // ============================================================
+  const downloads = [
+    { name: "Download 1",  url: "" },
+    { name: "Download 2",  url: "" },
+    { name: "Download 3",  url: "" },
+    { name: "Download 4",  url: "" },
+    { name: "Download 5",  url: "" },
+    { name: "Download 6",  url: "" },
+    { name: "Download 7",  url: "" },
+    { name: "Download 8",  url: "" },
+    { name: "Download 9",  url: "" },
+    { name: "Download 10", url: "" }
+  ];
+
+  const grid = document.getElementById("dl-grid");
+  downloads.forEach(item => {
+    const btn = document.createElement("a");
+    btn.className = "dl-btn";
+    btn.textContent = item.name;
+    if (item.url) {
+      btn.href = item.url;
+      btn.setAttribute("download", "");
+    } else {
+      btn.classList.add("disabled");
+    }
+    grid.appendChild(btn);
+  });
+</script>
+
+</body>
+</html>
